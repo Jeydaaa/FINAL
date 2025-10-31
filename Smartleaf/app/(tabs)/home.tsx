@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, Platform } from
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
   const [permission, requestPermission] = useCameraPermissions();
@@ -60,35 +61,44 @@ export default function HomeScreen() {
   // Loading state
   if (!isWeb && !permission) {
     return (
-      <View style={styles.loadingContainer}>
+      <LinearGradient
+        colors={["#D5F4DF", "#68952A"]}
+        style={styles.loadingContainer}
+      >
         <Text style={styles.loadingText}>Loading camera...</Text>
-      </View>
+      </LinearGradient>
     );
   }
 
   // Permission denied
   if (!isWeb && permission && !permission.granted) {
     return (
-      <View style={styles.permissionContainer}>
+      <LinearGradient
+        colors={["#D5F4DF", "#68952A"]}
+        style={styles.permissionContainer}
+      >
         <Ionicons name="camera-outline" size={80} color="#ccc" />
         <Text style={styles.permissionText}>Camera permission is required</Text>
         <TouchableOpacity style={styles.permissionButton} onPress={requestPermission}>
           <Text style={styles.permissionButtonText}>Grant Permission</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#D5F4DF", "#68952A"]}
+      style={styles.container}
+    >
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity>
-          <Ionicons name="menu" size={24} color="#000" />
+          <Ionicons name="menu" size={30} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>SmartLeaf</Text>
         <TouchableOpacity>
-          <Ionicons name="notifications-outline" size={24} color="#000" />
+          <Ionicons name="settings-outline" size={30} color="#000" />
         </TouchableOpacity>
       </View>
 
@@ -165,20 +175,18 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
       )}
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
   },
   loadingText: {
     fontSize: 16,
@@ -189,7 +197,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
   },
   permissionText: {
     fontSize: 16,
@@ -216,10 +223,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 50,
     paddingBottom: 15,
-    backgroundColor: '#d4f4dd',
+    backgroundColor: 'transparent',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 35,
     fontWeight: 'bold',
     color: '#2d5016',
   },
@@ -283,7 +290,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 30,
     paddingHorizontal: 40,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   controlButton: {
     width: 50,
@@ -312,7 +319,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 20,
     paddingBottom: 30,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   retakeButton: {
     flex: 1,

@@ -2,12 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function WelcomeScreen() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#D5F4DF", "#68952A"]}
+      style={styles.container}
+    >
       <Image
         source={require("../../assets/images/SL_logo3.png")} // your mango leaf logo here
         style={styles.logo}
@@ -24,21 +28,20 @@ export default function WelcomeScreen() {
       >
         <Ionicons name="arrow-forward-circle" size={50} color="#2e7d32" />
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#d8f3dc",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 210,
+    height: 210,
     resizeMode: "contain",
     marginBottom: 20,
   },
