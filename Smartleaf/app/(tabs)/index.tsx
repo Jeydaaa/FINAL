@@ -8,12 +8,9 @@ export default function WelcomeScreen() {
   const router = useRouter();
 
   return (
-    <LinearGradient
-      colors={["#D5F4DF", "#68952A"]}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#D5F4DF", "#68952A"]} style={styles.container}>
       <Image
-        source={require("../../assets/images/SL_logo3.png")} // your mango leaf logo here
+        source={require("../../assets/images/SLfinalLogo.png")}
         style={styles.logo}
       />
       <Text style={styles.title}>SmartLeaf</Text>
@@ -24,7 +21,7 @@ export default function WelcomeScreen() {
 
       <TouchableOpacity
         style={styles.nextButton}
-        onPress={() => router.push("/(tabs)/home")}
+        onPress={() => router.push("/home")}
       >
         <Ionicons name="arrow-forward-circle" size={50} color="#2e7d32" />
       </TouchableOpacity>
@@ -39,34 +36,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  logo: {
-    width: 210,
-    height: 210,
-    resizeMode: "contain",
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#1b5e20",
-  },
-  subtitle: {
-    fontSize: 14,
-    color: "#388e3c",
-    marginBottom: 30,
-  },
-  welcome: {
-    fontSize: 24,
-    fontWeight: "600",
-    color: "#1b5e20",
-  },
-  tagline: {
-    fontSize: 16,
-    color: "#388e3c",
-    marginTop: 5,
-    marginBottom: 50,
-  },
-  nextButton: {
-    marginTop: 20,
-  },
+  logo: { width: 210, height: 210, resizeMode: "contain", marginBottom: 20 },
+  title: { fontSize: 32, fontWeight: "bold", color: "#1b5e20" },
+  subtitle: { fontSize: 14, color: "#388e3c", marginBottom: 30 },
+  welcome: { fontSize: 24, fontWeight: "600", color: "#1b5e20" },
+  tagline: { fontSize: 16, color: "#388e3c", marginTop: 5, marginBottom: 50 },
+  nextButton: { marginTop: 20 },
 });

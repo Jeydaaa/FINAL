@@ -4,12 +4,14 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const cameraRef = useRef<CameraView>(null);
+  const router = useRouter();
 
   // Request camera permissions on mount
   React.useEffect(() => {
@@ -93,12 +95,14 @@ export default function HomeScreen() {
     >
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Ionicons name="menu" size={30} color="#000" />
+        <TouchableOpacity onPress={() => router.back()}>
+          <Ionicons name="home-outline" size={30} color="#000" />
         </TouchableOpacity>
+
         <Text style={styles.headerTitle}>SmartLeaf</Text>
-        <TouchableOpacity>
-          <Ionicons name="settings-outline" size={30} color="#000" />
+
+        <TouchableOpacity onPress={() => router.push("/(tabs)/menu")}>
+          <Ionicons name="menu" size={35} color="#000" />
         </TouchableOpacity>
       </View>
 
